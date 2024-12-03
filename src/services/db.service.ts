@@ -18,5 +18,5 @@ function run(
 ) {
 	return params ? db.prepare(sql).run(params) : db.prepare(sql).run();
 }
-
+console.log(db.prepare('SELECT * FROM reports where projectid = ? and id = ?').all(["1","1"]));
 export default { query, run };
