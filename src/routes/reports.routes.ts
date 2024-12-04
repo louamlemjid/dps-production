@@ -6,21 +6,22 @@ import {
     deleteReport,
     getAllReportsWithRedanduntWords
 } from '../controllers/reports.controller';
-
+import { authenticate } from './authenticationRoute';
 const router = Router();
 
 // Create a new report
-router.post('/', createReport);
+router.post('/',authenticate, createReport);
 
 // Get reports for a specific project
-router.get('/:projectId', getReportsByProjectId);
+router.get('/:projectId',authenticate, getReportsByProjectId);
 
 // Get all reports with redundant words
-router.get('/', getAllReportsWithRedanduntWords);
+router.get('/',authenticate, getAllReportsWithRedanduntWords);
+
 // Update a specific report
-router.put('/:id', updateReport);
+router.put('/:id',authenticate, updateReport);
 
 // Delete a specific report
-router.delete('/:id', deleteReport);
+router.delete('/:id',authenticate, deleteReport);
 
 export default router;
