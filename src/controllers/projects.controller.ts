@@ -3,7 +3,7 @@ import db from '../services/db.service'; // Assume your DB service handles queri
 
 export const getAllProjects = async (req: Request, res: Response) => {
     try {
-        const projects = db.query('SELECT * FROM projects');
+        const projects = db.query('SELECT * FROM projects,reports WHERE projects.id = reports.projectid');
         res.status(200).json(projects);
     } catch (error:any) {
         res.status(500).json({ error: error.message });
@@ -47,6 +47,7 @@ export const updateProject = async (req: Request, res: Response) => {
 export const deleteProject = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
+        db.run('DELETE FROM reports WHERE projectid = :id', {id});
         db.run('DELETE FROM projects WHERE id = :id', {id});
         res.status(200).json({ message: 'Project deleted successfully' });
     } catch (error:any) {
