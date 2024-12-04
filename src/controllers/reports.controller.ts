@@ -63,9 +63,16 @@ export const getAllReportsWithRedanduntWords = async (req: Request, res: Respons
         const resultedIdsArrays=findMostFrequentWordInReports(
             idsWithFrequentWords
         )//e.g ['1','2']
+        // Create placeholders like ":id0, :id1" and params like {"id0":'1',"id1":'2'}
+        const placeholders = resultedIdsArrays.map((_, index) => `:id${index}`).join(',');
+        const query = `SELECT * FROM reports WHERE id IN (${placeholders})`;
+        const params = resultedIdsArrays.reduce<Record<string, string>>((acc, id, index) => {
+            acc[`id${index}`] = id; 
+            return acc;
+        }, {});  
 
         const chosenReports= db
-        .query("SELECT * FROM reports WHERE id IN ('1','2')")
+        .query(query,params)
 
         res.status(200).json(chosenReports);
     } catch (error:any) {
