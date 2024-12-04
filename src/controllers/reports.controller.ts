@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import db from '../services/db.service';
-
+import { wordsCounterById } from '../specialOperationsFunctions/WordsFrequencyById';
+import { findMostFrequentWordInReports } from '../specialOperationsFunctions/findFrequentWords';
+import { report } from 'process';
+import { Report } from '../types/reportType'; 
 export const getAllReports = async (req: Request, res: Response) => {
     try {
         const reports = db.query('SELECT * FROM reports');
@@ -51,3 +54,21 @@ export const deleteReport = async (req: Request, res: Response) => {
     }
 };
 
+export const getAllReportsWithRedanduntWords = async (req: Request, res: Response) => {
+    try {
+        const reports = db.query("SELECT * FROM reports") as Report[];
+
+        const idsWithFrequentWords=wordsCounterById(reports)
+        //e.g { '1': { quantum: 3 }, '2': { quantum: 3, culinary: 3 } }
+        const resultedIdsArrays=findMostFrequentWordInReports(
+            idsWithFrequentWords
+        )//e.g ['1','2']
+
+        const chosenReports= db
+        .query("SELECT * FROM reports WHERE id IN ('1','2')")
+
+        res.status(200).json(chosenReports);
+    } catch (error:any) {
+        res.status(500).json({ error: error.message });
+    }
+}

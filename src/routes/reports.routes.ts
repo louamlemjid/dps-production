@@ -3,7 +3,8 @@ import {
     createReport, 
     getReportsByProjectId, 
     updateReport, 
-    deleteReport 
+    deleteReport,
+    getAllReportsWithRedanduntWords
 } from '../controllers/reports.controller';
 
 const router = Router();
@@ -14,6 +15,8 @@ router.post('/', createReport);
 // Get reports for a specific project
 router.get('/:projectId', getReportsByProjectId);
 
+// Get all reports with redundant words
+router.get('/', getAllReportsWithRedanduntWords);
 // Update a specific report
 router.put('/:id', updateReport);
 
