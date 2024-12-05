@@ -4,7 +4,8 @@ import {
     getReportsByProjectId, 
     updateReport, 
     deleteReport,
-    getAllReportsWithRedanduntWords
+    getAllReportsWithRedondantWords,
+    getAllReports
 } from '../controllers/reports.controller';
 import { authenticate } from './authenticationRoute';
 const router = Router();
@@ -13,10 +14,15 @@ const router = Router();
 router.post('/',authenticate, createReport);
 
 // Get reports for a specific project
-router.get('/:projectId',authenticate, getReportsByProjectId);
+router.get('/projectid/:projectId',authenticate, getReportsByProjectId);
+
+//Get reports having redandunt words
+router.get('/redondant',authenticate,getAllReportsWithRedondantWords)
 
 // Get all reports with redundant words
-router.get('/',authenticate, getAllReportsWithRedanduntWords);
+router.get('/',authenticate, getAllReports);
+
+
 
 // Update a specific report
 router.put('/:id',authenticate, updateReport);
