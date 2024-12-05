@@ -20,10 +20,9 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `createReport`
 - **Description:** Creates a new report.
 ```
-{ "id": "4", "text": "Some text", "projectId": "2" }
+{ "id": "3", "text": "First text test for Reports", "projectId": "4" }
 ```
 ![Create a New Report Example](./images/postReports.png)
-![Created a New Report Example](./images/createdReport.png)
 
 ---
 
@@ -33,7 +32,7 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `getReportsByProjectId`
 - **Description:** Retrieves reports associated with a specific project.
 
-![Get Reports by Project ID Example](./images/get-reports-by-project-id-example.png)
+![Get Reports by Project ID Example](./images/getReports.png)
 
 ---
 
@@ -43,7 +42,7 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `getAllReportsWithRedondantWords`
 - **Description:** Retrieves all reports containing redundant words.
 
-![Get Reports with Redundant Words Example](./images/get-reports-with-redondant-words-example.png)
+![Get Reports with Redundant Words Example](./images/redondantReports.png)
 
 ---
 
@@ -53,7 +52,7 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `getAllReports`
 - **Description:** Retrieves all reports.
 
-![Get All Reports Example](./images/get-all-reports-example.png)
+![Created a New Report Example](./images/createdReport.png)
 
 ---
 
@@ -64,9 +63,9 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Description:** Updates a specific report by its ID.
 
 ```
-{ "text": "Updated text", "projectId": "2" }
+{ "text": "First text test for Reports updated. Quantum computer is a Quantum physics field talking about Quantum Qubit"}
 ```
-![Update a Report Example](./images/update-report-example.png)
+![Update a Report Example](./images/putReports.png)
 
 ---
 
@@ -76,7 +75,6 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `deleteReport`
 - **Description:** Deletes a specific report by its ID.
 
-![Delete a Report Example](./images/delete-report-example.png)
 
 ---
 
@@ -90,7 +88,8 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 ```
 { "id": "3", "name": "New Project", "description": "Project Description" }
 ```
-![Create a New Project Example](./images/create-project-example.png)
+![Create a New Project Example](./images/postProjects.png)
+![Create a New Project Example](./images/createdProject.png)
 
 ---
 
@@ -100,7 +99,7 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `getAllProjects`
 - **Description:** Retrieves all projects.
 
-![Get All Projects Example](./images/get-all-projects-example.png)
+![Get All Projects Example](./images/getProjects.png)
 
 ---
 
@@ -110,7 +109,7 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `getProjectById`
 - **Description:** Retrieves a specific project by its ID.
 
-![Get a Project by ID Example](./images/get-project-by-id-example.png)
+![Get a Project by ID Example](./images/getProjectById.png)
 
 ---
 
@@ -122,7 +121,7 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 ```
 { "name": "Updated Project Name", "description": "Updated Project Description" }
 ```
-![Update a Project Example](./images/update-project-example.png)
+![Update a Project Example](./images/putProjects.png)
 
 ---
 
@@ -132,7 +131,8 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 - **Handler:** `deleteProject`
 - **Description:** Deletes a specific project by its ID.
 
-![Delete a Project Example](./images/delete-project-example.png)
+![Delete a Project Example](./images/deleteProjects.png)
+![Delete a Project Example](./images/deletedProject.png)
 
 ---
 
@@ -140,4 +140,3 @@ This API provides endpoints to manage **Projects** and **Reports**, including CR
 
 - The project uses a hardcoded authentication token (`Password123`) for securing API routes.
 - Ensure the `dps_diagram.drawio` file is in the root folder to view the folder structure diagram.
-- Test examples are provided in the `/tests/` folder with screenshots for each API request.
