@@ -22,8 +22,6 @@ router.get('/redondant',authenticate,getAllReportsWithRedondantWords)
 // Get all reports with redundant words
 router.get('/',authenticate, getAllReports);
 
-
-
 // Update a specific report
 router.put('/:id',authenticate, updateReport);
 
